@@ -38,7 +38,7 @@ function keyPressed() { //keyboard input
     if (keyCode === LEFT_ARROW || keyCode ===65) {
         me.moveDirection(-1)
     } else if (keyCode === RIGHT_ARROW || keyCode ===68) {
-        me.moveDirectionDirection(1)
+        me.moveDirection(1)
     } else if (keyCode === UP_ARROW || keyCode ===87) {
         me.moveDirection(0,-1)
     } else if (keyCode === DOWN_ARROW || keyCode ===83) {

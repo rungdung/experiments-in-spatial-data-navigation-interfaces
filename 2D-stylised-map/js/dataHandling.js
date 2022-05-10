@@ -14,9 +14,9 @@ class cursor {
 
   moveDirection(dirX = 0, dirY = 0) {
   
-    if (this.x > imageWidth) {
+    if (this.x > imageWidth) { // if beyond x domain
       this.x = 0;
-    } else if (this.y > imageHeight) {
+    } else if (this.y > imageHeight) { // if beyond y domain
       this.y = 0;
     } else if (this.x <= 0){ //does not work
       this.x = imageWidth / gridSize;
@@ -29,8 +29,10 @@ class cursor {
   }
 
   move(x,y){
-    this.x = floor(x);
-    this.y = floor(y);
+    if(x > 0 && y>0 && x<imageWidth && y < imageHeight){ // move coords must be within canvas coords domain
+      this.x = floor(x);
+      this.y = floor(y);
+    }
   }
 
   displayData() {
@@ -41,10 +43,10 @@ class cursor {
 
       var obj = db.data[coord]; //JSON has already been parsed? Must understand this.?
       document.getElementById("data").innerHTML =
-        "Primary land-use: " + obj.landUse +"<br>" +
-        "Primary owner: " + obj.ownership + "<br>" +
-        "Related laws: " + obj.laws + "<br>" +
-        "Lon/Lat:" + obj.lon + "/ " + obj.lat;
+        "<p>" + "Primary land-use: " + obj.landUse + "</p>"  +
+        "<p>" + "Primary owner: " + obj.ownership + "</p>"  +
+        "<p>" + "Related laws: " + obj.laws + "</p>"  +
+        "<p>" + "Lon/Lat:" + obj.lon + "/ " + obj.lat + "</p>";
     }
   }
 }
