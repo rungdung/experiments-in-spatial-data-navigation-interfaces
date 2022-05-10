@@ -8,9 +8,11 @@ body {
 
 canvas {
   display: block;
-
 }
 
+small {
+  font-size: 1rem;
+}
 .home{
   /* margin-top:10em; */
 }
@@ -34,5 +36,14 @@ h1#main-text{
   /* padding-left: 4em; */
   margin: 3em;
   padding: 0;
+}
 
+/* ref: https://stackoverflow.com/a/15935838/15299576 */
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
 }
