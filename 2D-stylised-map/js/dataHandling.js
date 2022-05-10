@@ -40,13 +40,30 @@ class cursor {
       // Only if position has changed
 
       var coord = floor((this.x + this.y * 3) / gridSize); //convert x,y indices into list indices
+      let dataDisplayElement = document.getElementById("data")
+      try{
+        var obj = activeDB.data[coord]; //JSON has already been parsed? Must understand this.?
+        dataDisplayElement.innerHTML =
+          "<p>" + "Primary land-use: " + obj.landUse + "</p>"  +
+          "<p>" + "Primary owner: " + obj.ownership + "</p>"  +
+          "<p>" + "Related laws: " + obj.laws + "</p>"  +
+          "<p>" + "Lon/Lat:" + obj.lon + "/ " + obj.lat + "</p>" +
+          "<p>" + "Year " + obj.Year + "</p>";
+      }
+      catch(err){
 
-      var obj = db.data[coord]; //JSON has already been parsed? Must understand this.?
-      document.getElementById("data").innerHTML =
-        "<p>" + "Primary land-use: " + obj.landUse + "</p>"  +
-        "<p>" + "Primary owner: " + obj.ownership + "</p>"  +
-        "<p>" + "Related laws: " + obj.laws + "</p>"  +
-        "<p>" + "Lon/Lat:" + obj.lon + "/ " + obj.lat + "</p>";
+        
+        // display directly from obj
+        var obj = db1880.data[coord]; //JSON has already been parsed? Must understand this.?
+        dataDisplayElement.innerHTML =
+          "<small>" + err + " Loading directly from db1880 file, please wait for year slider to appear" + "</small>" +
+          "<p>" + "Primary land-use: " + obj.landUse + "</p>"  +
+          "<p>" + "Primary owner: " + obj.ownership + "</p>"  +
+          "<p>" + "Related laws: " + obj.laws + "</p>"  +
+          "<p>" + "Lon/Lat:" + obj.lon + "/ " + obj.lat + "</p>" +
+          "<p>" + "Year " + obj.Year + "</p>";
+      }
     }
+      
   }
 }
