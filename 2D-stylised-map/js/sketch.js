@@ -42,7 +42,7 @@ function draw() {
     me.displayData(); 
 }
 
-function keyPressed() { //keyboard input
+function keyPressed() { //keyboard input for arrow and WASD keys
     if (keyCode === LEFT_ARROW || keyCode ===65) {
         me.moveDirection(-1)
     } else if (keyCode === RIGHT_ARROW || keyCode ===68) {
