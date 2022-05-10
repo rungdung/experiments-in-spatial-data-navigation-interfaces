@@ -1,0 +1,38 @@
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+
+}
+
+.home{
+  /* margin-top:10em; */
+}
+
+.text-box{
+  height:100vh;
+  flex-grow: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-right: 1em;
+    flex-direction: row;
+    align-content: center; /* NEW */
+}
+h1#main-text{
+  font-size: 4em;
+
+}
+
+#map {
+  /* padding-left: 4em; */
+  margin: 3em;
+  padding: 0;
+
+}
