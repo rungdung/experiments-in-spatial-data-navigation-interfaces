@@ -36,16 +36,20 @@ function draw() {
 
 function keyPressed() { //keyboard input
     if (keyCode === LEFT_ARROW || keyCode ===65) {
-        me.move(-1)
+        me.moveDirection(-1)
     } else if (keyCode === RIGHT_ARROW || keyCode ===68) {
-        me.move(1)
+        me.moveDirectionDirection(1)
     } else if (keyCode === UP_ARROW || keyCode ===87) {
-        me.move(0,-1)
+        me.moveDirection(0,-1)
     } else if (keyCode === DOWN_ARROW || keyCode ===83) {
-        me.move(0,1)
+        me.moveDirection(0,1)
     }
   }
 
-  function windowResized() { // resize the canvas if window is resized
+function mouseClicked(){
+    me.move(mouseX, mouseY);
+    console.log(mouseX, mouseY);
+}
+function windowResized() { // resize the canvas if window is resized
     resizeCanvas(widthDiv, imageWidth, imageHeight);
   }

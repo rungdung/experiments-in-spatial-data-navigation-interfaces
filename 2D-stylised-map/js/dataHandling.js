@@ -12,7 +12,7 @@ class cursor {
     rect(this.x, this.y, 10, 10);
   }
 
-  move(dirX = 0, dirY = 0) {
+  moveDirection(dirX = 0, dirY = 0) {
   
     if (this.x > imageWidth) {
       this.x = 0;
@@ -28,6 +28,11 @@ class cursor {
     }
   }
 
+  move(x,y){
+    this.x = floor(x);
+    this.y = floor(y);
+  }
+
   displayData() {
     if (this.x != this.prevPosiX && this.y != this.prevPosiY) {
       // Only if position has changed
@@ -36,14 +41,10 @@ class cursor {
 
       var obj = db.data[coord]; //JSON has already been parsed? Must understand this.?
       document.getElementById("data").innerHTML =
-        "Primary land-use: " +
-        obj.landUse +
-        "<br>" +
-        "Primary owner: " +
-        obj.ownership +
-        "<br>" +
-        "Related laws: " +
-        obj.laws;
+        "Primary land-use: " + obj.landUse +"<br>" +
+        "Primary owner: " + obj.ownership + "<br>" +
+        "Related laws: " + obj.laws + "<br>" +
+        "Lon/Lat:" + obj.lon + "/ " + obj.lat;
     }
   }
 }
