@@ -1,11 +1,18 @@
 function preload(){
     mapImage = loadImage('./assets/map.png');
-    db = loadJSON("./assets/data.json"); // db of data in JSON
+    db1880 = loadJSON("./assets/1880.json");
+    db1930 = loadJSON("./assets/1930.json"); // db of data in JSON
+    db1980 = loadJSON("./assets/1980.json");
+    db2030 = loadJSON("./assets/2030.json");
 }
 
 
 const gridSize = 8; //in px, fits with the map
 let me; //var to hold the cursor obj
+
+var activeDB;
+activeDB = Object.assign({}, db1880, {}); // obj to hold active db selected from slider, ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+//does not work.
 
 var widthDiv;
 var heightDiv;  
@@ -24,6 +31,7 @@ function setup() {
     createCanvas(imageWidth, imageHeight).parent("map");
     me = new cursor(); //initialising the cursor obj
     timedText();
+    slider();
 }
   
 function draw() {
