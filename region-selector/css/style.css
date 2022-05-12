@@ -1,0 +1,50 @@
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+canvas {
+  display: block;
+}
+
+#home {
+
+}
+#intro{
+  width:20%;
+  flex-grow: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-right: 1em;
+  flex-direction: row;
+  align-content: center; /* NEW */
+}
+#map { 
+  height:100vh;
+  flex-grow: 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-right: 1em;
+    flex-direction: row;
+    align-content: center; /* NEW */
+
+  margin-right:0px !important;
+}
+
+.info {
+  padding: 6px 8px;
+  color: red !important;
+  background: white;
+  background: rgba(255,255,255,1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
