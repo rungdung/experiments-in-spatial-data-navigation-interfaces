@@ -1,3 +1,7 @@
+## "region-selector"
+- [Link to live site](https://rungdung.github.io/experiments-in-spatial-data-navigation-interfaces/region-selector/)
+- Network graph visualisation on interactive Leaflet maps
+
 # Completed roadmap
 ## Map
 - Working [interactive Chloropeth map](https://en.wikipedia.org/wiki/Choropleth_map) via [leaflet.js](leafletjs.com)
