@@ -1,22 +1,13 @@
-# Experiments-in-spatial-data-navigation-interfaces
-This is a repository of experimental web interfaces made for navigating spatial data. 
+A few months ago, in a contextual class that was looking at complex systems, I prototyped an interface that visualised line of sight on a map, and based interactions off of that. 
 
-## Development focus
-Made with the intent of developing museum-like data interfaces for navigating data about landscape ecology in Kodagu, Karnataka, India.
+I write about that [here](https://rungdung.github.io/posts/visualising-line-of-sight-in-2d/)
 
-## Overall thought process
-- Both prototypes of mine have depended on a very simple user interface. 
-	- "2D-stylised-map" divides spatial data into equal units. In my opinion that might allow for easier digestion of large maps. Would it be a more equitable way of understanding resources if we can summarise for every square kilometre, instead of for every country or for every state?
-	- "region-selector" allows for interactive network visualisations to be realised on web maps. Inspired by [Obsidian, a note taking tool](obsidian.md). This allows for complex relationship webs to be seen.
+Fast-forward, I was asked to visualise a museum experience online for the community of Kodavas, or the people of Kodagu, popularly known as Coorg. While I chose to focus on landscape ecology, it was a timebound project. I had to conceptualise, wireframe and prototype it in 18 hours. 
 
-# Briefs
-## "2D-stylised-map"
-- [Link to live site](https://rungdung.github.io/experiments-in-spatial-data-navigation-interfaces/2D-stylised-map/index.html)
-- Was intended to be a gamified interface.
-- Grid based data search interface
+While my wireframe had been inspired to be a complete museum experience, my prototype focussed on the interactions. 
+Note: Both prototypes are static sites, all data is being loaded as static files, including data sets.
 
-## "region-selector"
-- [Link to live site](https://rungdung.github.io/experiments-in-spatial-data-navigation-interfaces/region-selector/)
-- Network graph visualisation on interactive Leaflet maps
-
-
+1. The first prototype intends to *gamify* the context by introducing a pixellised map where users hop from pixel to pixel. [See it here](https://rungdung.github.io/experiments-in-spatial-data-navigation-interfaces/2D-stylised-map/)
+   1. My retrospective reasoning for why this would be an interesting interface is because it would reduce all units of geographic countries, states, towns and villages to a unit system. All squares are of the same size and data is summarised for each square. All data will be per square unit, simplifying data interpretation.
+   
+2. The second prototype looks into drawing network graphs on interactive web maps. Related data, for example, export relationships between villages can be visualised by interactive networks. [See it here](/https://rungdung.github.io/experiments-in-spatial-data-navigation-interfaces/region-selector/)
