@@ -2,7 +2,7 @@ var mapboxAccessToken =
 	"pk.eyJ1IjoicnVuZ2R1bmciLCJhIjoiY2tqeWh6cXF4MDgzMjJvbWVmbGQzYjAwMyJ9.U-aJyoqyKvTXlhVk43jV1A";
 
 var map, customLayer, runLayer, networkLayer, legend;
-var LOC_codes = new Array;
+
 
 function initMap() {
 	map = L.map("map").setView([12.35315, 75.960846], 10);
@@ -39,17 +39,14 @@ function initMap() {
 
     // Legend
     legend = L.control({position: 'bottomright'});
-
-
-
+	
 	//  Omnivore KML to geoJSON function
-	runLayer = omnivore.kml("assets/kodagu_villages.kml", null, customLayer);
-	runLayer.addTo(map);
+	dataLayer = omnivore.kml("assets/kodagu_villages.kml", null, customLayer);
+	dataLayer.addTo(map);
 
     networkLayer = L.layerGroup();
     networkLayer.addTo(map);
-
-    legend.addTo(map);
+	legend.addTo(map);
 }
 
 // -----------------------------------------
@@ -70,6 +67,7 @@ function onEachFeature(feature, layer) {
     // Assign IDs to leaflet layers from the KML file
     layer._leaflet_id = feature.properties.LOC_CODE;
     LOC_codes.push(layer._leaflet_id); // global array of IDs
+	numOfConn.push(Math.floor(Math.random() * 10));
 }
 
 //  Highlight on hover
@@ -97,36 +95,7 @@ function resetHighlight(e) {
 	customLayer.resetStyle(e.target);
 }
 
-//  Network graph on right click
-function drawNetwork(e) {
-	// Clears layer before each zoom
-    map.removeLayer(networkLayer);
 
-	// Draw line between related features
-	// Unable to access layer id from layer obj. Cannot draw network graph
-    // https://stackoverflow.com/questions/28618049/accessing-leaflet-js-geojson-features-from-outside
-    // I need ids for that!
-    sizeOfIDs = LOC_codes.length;
-    randomVillageCode = Math.floor(Math.random() * sizeOfIDs); // LOC_CODE from KML is randomly generated
-    targetVillageCode = e.target.feature.properties.LOC_CODE; // current village LOC_CODE
-    console.log(randomVillageCode);
-
-	var lineCoords = [
-		e.target.getBounds().getCenter(),
-		runLayer.getLayer(LOC_codes[randomVillageCode]).getBounds().getCenter(),
-        runLayer.getLayer(LOC_codes[randomVillageCode + 12]).getBounds().getCenter(),
-        runLayer.getLayer(LOC_codes[randomVillageCode + 1]).getBounds().getCenter()
-       
-		//
-	];
-
-	networkLayer =  L.polyline(lineCoords, {
-		color: "blue"
-	})
-    
-    networkLayer.addTo(map);
-	map.fitBounds(networkLayer.getBounds());
-}
 
 // Zoom on click
 function zoomToFeature(e) {
@@ -172,19 +141,19 @@ function getColor(d) {
 
 
 
-legend.onAdd = function (map) {
+// legend.onAdd = function (map) {
 
-    var div = L.DomUtil.create('div', 'info legend'),
-        grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-        labels = [];
+//     var div = L.DomUtil.create('div', 'info legend'),
+//         grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+//         labels = [];
 
-    // loop through our density intervals and generate a label with a colored square for each interval
-    for (var i = 0; i < grades.length; i++) {
-        div.innerHTML +=
-            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-    }
+//     // loop through our density intervals and generate a label with a colored square for each interval
+//     for (var i = 0; i < grades.length; i++) {
+//         div.innerHTML +=
+//             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+//             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+//     }
 
-    return div;
-};
+//     return div;
+// };
 
