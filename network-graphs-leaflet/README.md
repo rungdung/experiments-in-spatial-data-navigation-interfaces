@@ -10,7 +10,8 @@
 - UI created
 - Algorithm for accessing other village centres to draw network graphs
 
-- Do not have the time to implement an actual network, a proof of concept draws polylines between multiple village centres.
+- Do not have the time to implement an actual network, a proof of concept draws polylines between multiple village centres. 
+  - Update: 16/6/22: Separate polylines used to create networks with random data.
 
 ## Data
 

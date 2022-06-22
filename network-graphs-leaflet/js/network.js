@@ -9,11 +9,6 @@ function drawNetwork(e) {
     map.removeLayer(networkLayer); // Clears layer before each zoom
 
 	// Draw line between related features
-	// Unable to access layer id from layer obj. Cannot draw network graph
-    // https://stackoverflow.com/questions/28618049/accessing-leaflet-js-geojson-features-from-outside
-    // I need ids for that!
-    // LOC_CODE from KML is randomly generated
-
     for(let i = 0; i < 5; i++){
         sizeOfIDs = LOC_codes.length;
         randomVillageCode = Math.floor(Math.random() * sizeOfIDs);
@@ -32,19 +27,9 @@ function drawNetwork(e) {
             weight: Math.floor(Math.random() * 10),
         });
 
-        tempLayer.addTo(networkLayer); // add templayer to network layer
+        tempLayer.addTo(networkLayer,{
+            pane: 'network',
+        }); // add templayer to network layer
     }
-
-	// var lineCoords = [
-		
-	// 	dataLayer.getLayer(LOC_codes[randomVillageCode]).getBounds().getCenter(),
-    //     dataLayer.getLayer(LOC_codes[randomVillageCode + 12]).getBounds().getCenter(),
-    //     dataLayer.getLayer(LOC_codes[randomVillageCode + 1]).getBounds().getCenter()
-       
-	// 	//
-	// ];
-
-    networkLayer.addTo(map)
-    networkLayer.bringToFront();
-	
+    networkLayer.addTo(map)	
 }

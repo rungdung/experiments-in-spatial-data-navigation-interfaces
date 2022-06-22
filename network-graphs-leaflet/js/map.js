@@ -37,16 +37,32 @@ function initMap() {
 		onEachFeature: onEachFeature,
 	});
 
-    // Legend
-    legend = L.control({position: 'bottomright'});
-	
 	//  Omnivore KML to geoJSON function
 	dataLayer = omnivore.kml("assets/kodagu_villages.kml", null, customLayer);
 	dataLayer.addTo(map);
 
-    networkLayer = L.layerGroup();
+
+	//https://leafletjs.com/examples/map-panes/
+	// panes to handle z indices for networks
+	map.createPane('network');
+	map.getPane('network').style.zIndex = 10000000;
+	map.getPane('network').style.pointerEvents = 'none';
+
+    networkLayer = L.layerGroup({
+		pane: 'network',
+	});
     networkLayer.addTo(map);
-	legend.addTo(map);
+
+	//https://stackoverflow.com/a/26504907/15299576
+	polyLine.on('mouseover', function(e) {
+		var layer = e.target;
+	
+		layer.setStyle({
+			color: 'blue',
+			opacity: 1,
+			weight: 5
+		});
+	});
 }
 
 // -----------------------------------------
@@ -141,19 +157,5 @@ function getColor(d) {
 
 
 
-// legend.onAdd = function (map) {
 
-//     var div = L.DomUtil.create('div', 'info legend'),
-//         grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-//         labels = [];
-
-//     // loop through our density intervals and generate a label with a colored square for each interval
-//     for (var i = 0; i < grades.length; i++) {
-//         div.innerHTML +=
-//             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
-//             grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
-//     }
-
-//     return div;
-// };
 
